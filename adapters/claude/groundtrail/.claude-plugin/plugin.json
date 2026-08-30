@@ -1,0 +1,16 @@
+{
+  "name": "groundtrail",
+  "description": "Evidence-led Groundtrail Method skills for bounded software delivery.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Groundtrail Method maintainers"
+  },
+  "homepage": "https://github.com/bajrang0789/agentic-sdlc-kit",
+  "repository": "https://github.com/bajrang0789/agentic-sdlc-kit",
+  "license": "Apache-2.0",
+  "keywords": [
+    "groundtrail",
+    "evidence",
+    "sdlc"
+  ]
+}

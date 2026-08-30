@@ -1,0 +1,47 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: incident-learning
+version: 0.1.0
+stage: learning
+summary: Create evidence-led linked follow-up work without rewriting history.
+triggers:
+  - incident-evidence-available
+  - rollback-or-regression-reviewed
+requires:
+  artifacts:
+    - ground-packet
+    - source-record-reference
+    - trail-record
+    - observation-record
+  states:
+    - observing
+    - regressed
+    - rolled_back
+    - completed
+produces:
+  artifacts:
+    - trail-record
+    - ground-packet
+  states:
+    - observing
+    - regressed
+    - rolled_back
+    - completed
+composition:
+  after:
+    - production-observation
+  before: []
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: recommend
+controlPoints:
+  enter: []
+  exit: []
+sourceRequirements: []
+freshness:
+  bindToRevision: true

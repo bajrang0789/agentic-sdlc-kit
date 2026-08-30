@@ -1,0 +1,24 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-waiver-security-01",
+  "issuer": {
+    "id": "mira-steward",
+    "type": "authorized-human"
+  },
+  "sourceType": "approval",
+  "subject": {
+    "id": "ember-vault",
+    "revision": "d49eb13",
+    "uri": "urn:groundtrail-example:repository:ember-vault"
+  },
+  "evidenceType": "time-bounded-legacy-finding-waiver",
+  "result": "approved",
+  "artifact": {
+    "id": "src-waiver-security-01-artifact",
+    "uri": "urn:groundtrail-example:src-waiver-security-01-artifact",
+    "digest": "03f3f3f21473323a9d5b77c1cb65468f7d2910a9440a59d46376f03129255654"
+  },
+  "observedAt": "2026-08-30T11:40:00Z",
+  "expiresAt": "2026-09-02T11:40:00Z",
+  "collectionMethod": "automated"
+}

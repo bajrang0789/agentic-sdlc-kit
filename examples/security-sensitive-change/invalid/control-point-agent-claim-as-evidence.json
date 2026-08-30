@@ -1,0 +1,12 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "legacy-scanner-finding-waiver",
+  "version": "1",
+  "status": "satisfied",
+  "requiredSourceTypes": ["scanner"],
+  "requiredIssuers": ["sentinel-scan"],
+  "revision": "d49eb13",
+  "freshnessRequired": true,
+  "satisfiedBy": ["security-claim-01"],
+  "decidedAt": "2026-08-30T11:41:00Z"
+}

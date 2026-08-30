@@ -1,0 +1,37 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-shared-library-01",
+  "repository": {
+    "id": "quartz-tools",
+    "revision": "c38da02",
+    "uri": "urn:groundtrail-example:repository:quartz-tools"
+  },
+  "intendedOutcome": "Preserve empty-label formatting in the shared display helper across known consumers.",
+  "acceptanceCriteria": [
+    "The helper retains the empty-label fallback.",
+    "Direct and inferred consumers are reevaluated at the new revision."
+  ],
+  "constraints": ["Do not release using source evidence from the prior revision."],
+  "repositoryMap": {
+    "id": "repository-map-shared-library-01",
+    "uri": "urn:groundtrail-example:repository-map-shared-library-01",
+    "digest": "402bdfa5d914b3e69ac16958e32f2fe35d79a868ea0bfe8b0cf8f5110673328c"
+  },
+  "reachMap": {
+    "id": "reach-map-shared-library-01",
+    "uri": "urn:groundtrail-example:shared-library-change:reach-map",
+    "digest": "06a9a148d6f81af4164c7ad7ca5e86b0f7569b8d13b00871aebdc3b9cfbd5faa"
+  },
+  "actionBand": "workspace",
+  "trackState": "implementing",
+  "controlPoints": ["verification-sources-current"],
+  "knownUnknowns": ["No runtime call graph was available for optional plug-in consumers."],
+  "sourceReferences": [
+    {
+      "id": "src-ci-shared-library-old-01",
+      "uri": "urn:groundtrail-example:shared-library-change:source:old-ci",
+      "digest": "72194dfde699479537bdf1f7666c2b35959306b73661148e1e44b7eb66a85540"
+    }
+  ],
+  "expiresAt": "2026-09-06T00:00:00Z"
+}

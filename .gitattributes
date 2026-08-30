@@ -1,0 +1,2 @@
+# Preserve byte-level fixtures and suppress text diff whitespace normalization.
+test/vectors/trees/crlf.txt -text -diff

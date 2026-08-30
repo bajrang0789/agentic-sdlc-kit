@@ -1,0 +1,13 @@
+{
+  "name": "groundtrail-marketplace",
+  "owner": {
+    "name": "Groundtrail Method maintainers"
+  },
+  "plugins": [
+    {
+      "name": "groundtrail",
+      "source": "./adapters/claude/groundtrail",
+      "strict": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "legacy-scanner-finding-waiver",
+  "version": "1",
+  "status": "waived",
+  "requiredSourceTypes": ["approval"],
+  "requiredIssuers": ["mira-steward"],
+  "revision": "d49eb13",
+  "freshnessRequired": true,
+  "waiver": {
+    "sourceRecordId": "src-waiver-security-01",
+    "reason": "A pre-existing scanner signature is outside this bounded session-token change.",
+    "scope": "Only the named legacy signature on revision d49eb13.",
+    "expiresAt": "2026-09-02T11:40:00Z",
+    "revision": "d49eb13"
+  },
+  "decidedAt": "2026-08-30T11:41:00Z"
+}

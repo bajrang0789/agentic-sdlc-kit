@@ -1,0 +1,652 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "provider": "devin",
+  "version": "0.1.0",
+  "canonicalSkills": [
+    {
+      "id": "bounded-implementation",
+      "version": "0.1.0",
+      "digest": "bb9cf5cb608ae0e060abc80312e02049cfef3938bc42126bba14c0f538f1f6c8",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [
+          "implementation-chart-approved"
+        ],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart"
+        ],
+        "states": [
+          "planned",
+          "changes_required"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "handoff-bundle"
+        ],
+        "states": [
+          "implementing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "shell:allowlisted reduced to no shell execution because verified Devin Skill frontmatter has no command-scoped exec ceiling",
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "change-assessment",
+      "version": "0.1.0",
+      "digest": "9bb6d98206c5f43f267700c73a9d632784cace8c761a880a6d594a2a1ea46f10",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "verification-sources-current"
+        ],
+        "exit": [
+          "assessment-complete"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "verification-matrix",
+          "claim-record",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "trail-record"
+        ],
+        "states": [
+          "assessing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "change-charting",
+      "version": "0.1.0",
+      "digest": "7c6453e8696e90fd3ff5e8906ffb59a80f8b9ed8a039ab2e95c46cb40a4cbb3a",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "context-bounded"
+        ],
+        "exit": [
+          "implementation-chart-approved"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "repository-map",
+          "requirement-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "change-chart",
+          "reach-map",
+          "trail-record"
+        ],
+        "states": [
+          "planned"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "evidence-handoff",
+      "version": "0.1.0",
+      "digest": "e8a01a43089d4e286b95a4b55668f33199059b14e9eacff887bdf9b0e402f865",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet"
+        ],
+        "states": [
+          "unframed",
+          "framed",
+          "planned",
+          "implementing",
+          "verifying",
+          "assessing",
+          "release_ready",
+          "releasing",
+          "observing",
+          "needs_input",
+          "blocked",
+          "changes_required",
+          "release_failed",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "handoff-bundle",
+          "trail-record"
+        ],
+        "states": [
+          "unframed",
+          "framed",
+          "planned",
+          "implementing",
+          "verifying",
+          "assessing",
+          "release_ready",
+          "releasing",
+          "observing",
+          "needs_input",
+          "blocked",
+          "changes_required",
+          "release_failed",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "incident-learning",
+      "version": "0.1.0",
+      "digest": "cfa063508631a37d0a06438ce60e4fa492da4f1aea68cb14ab100a84f2ec3de6",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "source-record-reference",
+          "trail-record",
+          "observation-record"
+        ],
+        "states": [
+          "observing",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "trail-record",
+          "ground-packet"
+        ],
+        "states": [
+          "observing",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "intent-framing",
+      "version": "0.1.0",
+      "digest": "60847ff06158806ed83c91eaa3ea6b93d0950bc1ab389aaed82ccd55356adcfd",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "context-bounded"
+        ],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "repository-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "ground-packet",
+          "requirement-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "production-observation",
+      "version": "0.1.0",
+      "digest": "485169c591d699f7b3d210948e34a5b9a0bfac3ad182d914f9b4999350088421",
+      "actionBand": "observe",
+      "controlPoints": {
+        "enter": [
+          "release-authorized"
+        ],
+        "exit": [
+          "observation-complete"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "release-packet",
+          "source-record-reference"
+        ],
+        "states": [
+          "releasing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "trail-record",
+          "observation-record",
+          "source-record-reference"
+        ],
+        "states": [
+          "observing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "release-readiness",
+      "version": "0.1.0",
+      "digest": "55b785b8bd8730bb561c1e4b64234ae4efc1d85ad98de87034a53c66e3c38fd9",
+      "actionBand": "gated",
+      "controlPoints": {
+        "enter": [
+          "assessment-complete"
+        ],
+        "exit": [
+          "release-authorized"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "verification-matrix",
+          "claim-record",
+          "source-record-reference",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "assessing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "release-packet"
+        ],
+        "states": [
+          "release_ready"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "gated"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling",
+        "external mutation retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "repository-discovery",
+      "version": "0.1.0",
+      "digest": "293705e2f39e623e1d6f1282d30eeb7c4c86d7165bc1aceef8b204c861e4c723",
+      "actionBand": "observe",
+      "controlPoints": {
+        "enter": [],
+        "exit": [
+          "context-bounded"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet"
+        ],
+        "states": [
+          "unframed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "repository-map",
+          "trail-record"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "security-assessment",
+      "version": "0.1.0",
+      "digest": "951a0c5af4ae535ed2316c385e309d9221bd9c49be699f34b92639a376494253",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "verification-matrix",
+          "source-record-reference"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "shell:allowlisted reduced to no shell execution because verified Devin Skill frontmatter has no command-scoped exec ceiling",
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    },
+    {
+      "id": "verification-matrix",
+      "version": "0.1.0",
+      "digest": "150baa91aaaba2e54715352e46e5cc0d5a77f09841cc9d2c2ec61b06200716af",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [],
+        "exit": [
+          "verification-sources-current"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "claim-record"
+        ],
+        "states": [
+          "implementing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "verification-matrix",
+          "claim-record",
+          "source-record-reference"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": [
+        "shell:allowlisted reduced to no shell execution because verified Devin Skill frontmatter has no command-scoped exec ceiling",
+        "network denial retained as procedure restriction; no verified Skill tool ceiling"
+      ]
+    }
+  ],
+  "canonicalTreeDigest": "5d6251d26c16edbda5749df06602fb1978dc796086daeea2b59792656f660631",
+  "payloadTreeDigest": "9be743a4d2b64fce697f88b80e44de2d9bb594f64c0fc48114621ca6cd3c3deb",
+  "files": [
+    {
+      "path": ".agents/skills/groundtrail-bounded-implementation/SKILL.md",
+      "digest": "8142cda123c77aaa8a0e1a0a44ead07fb6c3a2c669b7c48367be75ca4a30bfc1"
+    },
+    {
+      "path": ".agents/skills/groundtrail-change-assessment/SKILL.md",
+      "digest": "455bd6b5f498871d7270ca1f2f3a869650cae05db8edcf6474874eca1d80de3a"
+    },
+    {
+      "path": ".agents/skills/groundtrail-change-charting/SKILL.md",
+      "digest": "d36ba1a6de33dd2e37a18fbb1229bfd48ba1e5dee9a118dbdbf729039cc5bbdd"
+    },
+    {
+      "path": ".agents/skills/groundtrail-evidence-handoff/SKILL.md",
+      "digest": "d2f8a2ac7e708da43622e4068e9328e667198d1dfe0cdc1a760b831300b8550e"
+    },
+    {
+      "path": ".agents/skills/groundtrail-incident-learning/SKILL.md",
+      "digest": "4ac400fc37fc50be2b81b41fc7f09eb55a8f217afb5f481ad499bae186967405"
+    },
+    {
+      "path": ".agents/skills/groundtrail-intent-framing/SKILL.md",
+      "digest": "56d410de55ff4b092b60dda639c36f5bffeec58b3f9a5a218f5d30987e90863d"
+    },
+    {
+      "path": ".agents/skills/groundtrail-production-observation/SKILL.md",
+      "digest": "c79c99d38960930b4588da6cafc3083b10c1fe1938a5b280a1286972dc312c0f"
+    },
+    {
+      "path": ".agents/skills/groundtrail-release-readiness/SKILL.md",
+      "digest": "1e3165d11fb8084b23ba8d8973c67184568bb77bca2904e4819cffd5c1516147"
+    },
+    {
+      "path": ".agents/skills/groundtrail-repository-discovery/SKILL.md",
+      "digest": "5b96380a5184841b2578b77153506688b0817be274cf1f4f4f2e09f303c05a44"
+    },
+    {
+      "path": ".agents/skills/groundtrail-security-assessment/SKILL.md",
+      "digest": "d7119c21c5871ba429d08de3831fb00f7ce2ea3d1a4b7b41cadc71e1eddadb69"
+    },
+    {
+      "path": ".agents/skills/groundtrail-verification-matrix/SKILL.md",
+      "digest": "17fb05fe406ab5c58bf72b535a6aac6407e35f586b16537e11fdcdc542b693a4"
+    },
+    {
+      "path": "optional/export-guide.md",
+      "digest": "8a0918f5426ed166dd00fe9fdd4512f4f84119a4383e0b46cbe1680cddf9b154"
+    },
+    {
+      "path": "optional/knowledge/evidence-rules.md",
+      "digest": "ef3e8c9e8e55336de60a6f27a0536f05b87429f539f328f4d2c072db596f6721"
+    },
+    {
+      "path": "optional/knowledge/groundtrail-method.md",
+      "digest": "17d4cfcf5355f1681d83513f3fe06116defd99a3ca19ef3ffceee687debcce45"
+    },
+    {
+      "path": "optional/knowledge/vocabulary.md",
+      "digest": "cc19849e874f4ca089d9f23296a95fa3c549d9c168f2f9a07f84ff6d9065b80e"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-bounded-implementation.devin.md",
+      "digest": "33fabf1f490da2d5eb060fdd1b93690dee5c1f8b92f4e8a2ebd04a39eb3e1ca0"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-change-assessment.devin.md",
+      "digest": "a20bb9f4b180f7ff62e9c9a9531beac67befc51f68fba9a3c6e0ab42d940946a"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-change-charting.devin.md",
+      "digest": "80e178077670f6e1b64e4d2eb0d47fc51a396e2cae1b5b0568e28b8848665986"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-evidence-handoff.devin.md",
+      "digest": "8045e0b1428819c20450f7ac246779ea7dc19d5ecc0c0730789543f2dcf9e176"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-incident-learning.devin.md",
+      "digest": "b55a4bcd6bb9cbd7ca548b489ade64f7dc80a594960c8ec140d1792bbc56d989"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-intent-framing.devin.md",
+      "digest": "207c3b7f76f10b9db8c6c365b375f9ff7f21f00424890153b2bf383d1fe3962f"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-production-observation.devin.md",
+      "digest": "db0986f57340c3ee4fbe7fa457e845d74cbd8130c58f7daf90369e1e8dc28b0c"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-release-readiness.devin.md",
+      "digest": "15f707c898956979eda10115b83f553ac3cd3377500b50977ede5f7983bccfed"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-repository-discovery.devin.md",
+      "digest": "8143d0ab544e1def1232163f8cf5837de12d4ddf3561e9a9ec774f62de0d8bbd"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-security-assessment.devin.md",
+      "digest": "9e375a875cfc250b1ddd48b34f0464543d93d580980f81111f9c68ac7eff3865"
+    },
+    {
+      "path": "optional/playbooks/groundtrail-verification-matrix.devin.md",
+      "digest": "1a37ca78451fce7f3f5f28fd751d2f6c3236e5355c725f75dc063e3ba308a0dc"
+    }
+  ],
+  "capabilityReductions": [
+    "Devin allowed-tools is an additional tool ceiling; session and provider policy remain authoritative.",
+    "No verified Skill frontmatter syntax command-scopes exec or enforces the canonical network and external-mutation ceilings.",
+    "Skills with canonical shell:allowlisted are rendered without exec. They remain valid for inspection, editing where permitted, evidence collection, and requesting an authorized local check."
+  ]
+}

@@ -1,0 +1,101 @@
+apiVersion: agentic-sdlc-kit/method/v1
+states:
+  - id: unframed
+    terminal: false
+    sideState: false
+    transitions: [framed, needs_input, cancelled]
+  - id: framed
+    terminal: false
+    sideState: false
+    transitions: [planned, needs_input, blocked, cancelled]
+  - id: planned
+    terminal: false
+    sideState: false
+    transitions: [implementing, needs_input, blocked, cancelled]
+  - id: implementing
+    terminal: false
+    sideState: false
+    transitions: [verifying, needs_input, blocked, cancelled]
+  - id: verifying
+    terminal: false
+    sideState: false
+    transitions: [assessing, implementing, needs_input, blocked, cancelled]
+  - id: assessing
+    terminal: false
+    sideState: false
+    transitions: [release_ready, changes_required, needs_input, blocked, cancelled]
+  - id: release_ready
+    terminal: false
+    sideState: false
+    transitions: [releasing, implementing, verifying, needs_input, blocked, cancelled]
+  - id: releasing
+    terminal: false
+    sideState: false
+    transitions: [observing, release_failed, needs_input, blocked]
+  - id: observing
+    terminal: false
+    sideState: false
+    transitions: [completed, regressed, needs_input, blocked]
+  - id: completed
+    terminal: true
+    sideState: false
+    transitions: []
+  - id: needs_input
+    terminal: false
+    sideState: true
+    resumeToRecordedPriorState: true
+    transitions:
+      [
+        unframed,
+        framed,
+        planned,
+        implementing,
+        verifying,
+        assessing,
+        release_ready,
+        releasing,
+        observing,
+        blocked,
+        cancelled,
+      ]
+  - id: blocked
+    terminal: false
+    sideState: true
+    resumeRequires: source-record-or-authorized-waiver
+    transitions:
+      [
+        framed,
+        planned,
+        implementing,
+        verifying,
+        assessing,
+        release_ready,
+        releasing,
+        observing,
+        cancelled,
+      ]
+  - id: changes_required
+    terminal: false
+    sideState: true
+    transitions: [implementing]
+  - id: release_failed
+    terminal: false
+    sideState: true
+    transitions: [planned, releasing, rolled_back]
+  - id: regressed
+    terminal: false
+    sideState: true
+    transitions: [rolled_back, implementing]
+  - id: rolled_back
+    terminal: false
+    sideState: true
+    transitions: [planned, implementing, observing, completed]
+  - id: cancelled
+    terminal: true
+    sideState: true
+    transitions: []
+revisionInvalidation:
+  fromStates: [verifying, assessing, release_ready]
+  returnsTo: [implementing, verifying]
+  rule: A material revision invalidates revision-bound records and requires reevaluation.
+postReleaseRevisionRule: Create a linked Change Thread; never rewrite a released thread.

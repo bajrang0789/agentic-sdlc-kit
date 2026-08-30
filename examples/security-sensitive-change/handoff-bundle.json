@@ -1,0 +1,34 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-security-boundary-01",
+  "groundPacketDigest": "8fc66a17ccace50b657267a333241d221dbe901e559b11440ccfbace410d0b13",
+  "trackState": "release_ready",
+  "completedWork": [
+    "Bound audience checking to the documented token boundary.",
+    "Collected scanner, independent reviewer, and authorized waiver Source Records."
+  ],
+  "changedPaths": ["src/token/audience.ts", "src/token/audience.test.ts"],
+  "decisions": [],
+  "claims": ["security-claim-01"],
+  "sourceReferences": [
+    {
+      "id": "src-scanner-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-scanner-security-01",
+      "digest": "62632dcf2cd1ee2db51aef06f63940c7d195c13bf1d4de0c991d9918911e3782"
+    },
+    {
+      "id": "src-review-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-review-security-01",
+      "digest": "e62844c9098f37e811d74f6f0904eb049cafe3bfbc303af65a35862a2f080bf4"
+    },
+    {
+      "id": "src-waiver-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-waiver-security-01",
+      "digest": "c7bbefc5fe6c39d88490811f97e37a40f65b71caeace33e8745961c7a6ade96a"
+    }
+  ],
+  "outstandingControlPoints": [],
+  "knownUnknowns": ["The legacy scanner signature has no machine-readable remediation location."],
+  "nextSkills": ["release-readiness", "evidence-handoff"],
+  "revision": "d49eb13"
+}

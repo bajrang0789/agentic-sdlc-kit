@@ -1,0 +1,23 @@
+apiVersion: agentic-sdlc-kit/method/v1
+bands:
+  - id: observe
+    rank: 0
+    allows: Read supplied files and produce analysis records.
+    prohibits: [repository-writes, commands, network, external-mutations]
+  - id: recommend
+    rank: 1
+    allows: Propose plans, patches, tests, and decisions.
+    prohibits: [applying-changes, external-mutations]
+  - id: workspace
+    rank: 2
+    allows: Edit the local worktree and run allowlisted local checks.
+    prohibits: [push, pull-request-mutation, merge, release, deploy, production-access]
+  - id: gated
+    rank: 3
+    allows: Perform an explicitly listed external action after its Control Point is satisfied.
+    prohibits: [unlisted-external-actions, independent-policy-waivers]
+  - id: delegated
+    rank: 4
+    allows: Perform policy-scoped actions delegated in the Ground Packet.
+    prohibits: [scope-expansion, policy-changes, self-approval, human-only-control-bypass]
+effectiveBandRule: The effective Action Band is the most restrictive applicable ceiling.

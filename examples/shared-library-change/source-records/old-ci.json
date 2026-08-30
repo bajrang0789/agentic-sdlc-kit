@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-ci-shared-library-old-01",
+  "issuer": {
+    "id": "forge-ci",
+    "type": "ci"
+  },
+  "sourceType": "ci",
+  "subject": {
+    "id": "quartz-tools",
+    "revision": "b27cf91",
+    "uri": "urn:groundtrail-example:repository:quartz-tools"
+  },
+  "evidenceType": "library-contract-checks",
+  "result": "pass",
+  "artifact": {
+    "id": "src-ci-shared-library-old-01-artifact",
+    "uri": "urn:groundtrail-example:src-ci-shared-library-old-01-artifact",
+    "digest": "13ba2e37a258296d7f958211421e3029f8eb60d595c954ea9c081e619b29073e"
+  },
+  "observedAt": "2026-08-30T10:20:00Z",
+  "collectionMethod": "automated"
+}

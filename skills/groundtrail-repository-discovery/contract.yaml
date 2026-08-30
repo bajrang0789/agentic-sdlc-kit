@@ -1,0 +1,39 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: repository-discovery
+version: 0.1.0
+stage: discovery
+summary: Build a bounded repository map before downstream work.
+triggers:
+  - new-change-thread
+  - stale-repository-context
+requires:
+  artifacts:
+    - ground-packet
+  states:
+    - unframed
+produces:
+  artifacts:
+    - repository-map
+    - trail-record
+  states:
+    - framed
+composition:
+  after: []
+  before:
+    - intent-framing
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: observe
+controlPoints:
+  enter: []
+  exit:
+    - context-bounded
+sourceRequirements: []
+freshness:
+  bindToRevision: true

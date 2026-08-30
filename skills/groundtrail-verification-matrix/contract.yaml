@@ -1,0 +1,43 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: verification-matrix
+version: 0.1.0
+stage: testing
+summary: Map requirements and reach to verification and evidence references.
+triggers:
+  - implementation-ready-for-verification
+  - verification-stale
+requires:
+  artifacts:
+    - ground-packet
+    - change-chart
+    - claim-record
+  states:
+    - implementing
+produces:
+  artifacts:
+    - verification-matrix
+    - claim-record
+    - source-record-reference
+  states:
+    - verifying
+composition:
+  after:
+    - bounded-implementation
+  before:
+    - security-assessment
+permissions:
+  filesystem: write
+  shell: allowlisted
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: workspace
+controlPoints:
+  enter: []
+  exit:
+    - verification-sources-current
+sourceRequirements: []
+freshness:
+  bindToRevision: true

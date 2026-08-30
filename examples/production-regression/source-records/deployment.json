@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-deployment-regression-01",
+  "issuer": {
+    "id": "release-orbit",
+    "type": "deployment-system"
+  },
+  "sourceType": "deployment",
+  "subject": {
+    "id": "cinder-checkout",
+    "revision": "e51fc24",
+    "uri": "urn:groundtrail-example:repository:cinder-checkout"
+  },
+  "evidenceType": "canary-deployment",
+  "result": "pass",
+  "artifact": {
+    "id": "src-deployment-regression-01-artifact",
+    "uri": "urn:groundtrail-example:src-deployment-regression-01-artifact",
+    "digest": "950f5954c7a1949d47b20e496aac80beaf9c210a310e1c8f83e00a88de39bfea"
+  },
+  "observedAt": "2026-08-30T12:20:00Z",
+  "collectionMethod": "automated"
+}

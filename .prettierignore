@@ -1,0 +1,6 @@
+adapters/
+.claude-plugin/
+coverage/
+dist/
+node_modules/
+package-lock.json
