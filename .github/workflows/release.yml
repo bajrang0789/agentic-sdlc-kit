@@ -139,7 +139,7 @@ jobs:
           )
 
       - name: Create SPDX SBOM
-        uses: anchore/sbom-action@aa0e114b2e19480f157109b9922bda359bd98b90 # v0.20.8
+        uses: anchore/sbom-action@aa80c8c5bd439a416a62804f2151ab38c671a638 # v0.24.1
         with:
           path: .
           format: spdx-json
