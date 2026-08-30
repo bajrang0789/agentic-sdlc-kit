@@ -1,0 +1,85 @@
+{
+  "name": "@bajrang0789/agentic-sdlc-kit",
+  "version": "0.1.0",
+  "description": "Groundtrail Method: original, provider-neutral skills and evidence-led SDLC distribution tools.",
+  "keywords": [
+    "groundtrail",
+    "agent-skills",
+    "evidence-led",
+    "software-delivery",
+    "provider-neutral"
+  ],
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": false,
+  "engines": {
+    "node": ">=22 <27"
+  },
+  "packageManager": "npm@10.9.4",
+  "bin": {
+    "groundtrail": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "schemas/",
+    "skills/",
+    "method/",
+    "adapters/",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bajrang0789/agentic-sdlc-kit.git"
+  },
+  "homepage": "https://github.com/bajrang0789/agentic-sdlc-kit#readme",
+  "bugs": {
+    "url": "https://github.com/bajrang0789/agentic-sdlc-kit/issues"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run test/unit",
+    "test:contract": "vitest run test/contract",
+    "test:compat": "vitest run test/compatibility --exclude test/compatibility/package-smoke.test.ts",
+    "test:package-smoke": "vitest run test/compatibility/package-smoke.test.ts",
+    "method:check": "tsx scripts/check-method.ts",
+    "schemas:check": "tsx scripts/check-schemas.ts",
+    "carriers:generate": "tsx scripts/generate-carriers.ts",
+    "carriers:check": "tsx scripts/check-carriers.ts",
+    "release:sync-version": "tsx scripts/sync-release-version.ts && npm run carriers:generate",
+    "release:check-version": "npm run build && tsx scripts/check-release-version.ts",
+    "clean-room:content": "tsx scripts/check-content-provenance.ts",
+    "bootstrap:audit": "tsx scripts/audit-bootstrap-provenance.ts",
+    "check": "npm run clean-room:content && npm run format:check && npm run lint && npm run typecheck && npm run method:check && npm run skills:check && npm run schemas:check && npm run carriers:check && npm run release:check-version && npm run test",
+    "skills:check": "tsx scripts/check-method.ts && tsx src/cli.ts validate skills --kind skill",
+    "test:cli": "vitest run test/cli",
+    "test:security": "vitest run test/security"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "canonicalize": "4.0.0",
+    "commander": "15.0.0",
+    "fd-lock": "2.2.0",
+    "yaml": "2.9.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.4.0",
+    "eslint": "10.0.1",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.68.0",
+    "vitest": "4.1.11"
+  }
+}

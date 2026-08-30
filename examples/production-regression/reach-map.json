@@ -1,0 +1,27 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-production-regression-01",
+  "repository": "cinder-checkout",
+  "revision": "e51fc24",
+  "entries": [
+    {
+      "service": "cinder-checkout-api",
+      "relation": "direct",
+      "derivation": "observed",
+      "sourceReferences": [
+        {
+          "id": "checkout-deploy-map-01",
+          "uri": "urn:groundtrail-example:checkout-deploy-map-01",
+          "digest": "b18e3caf061a131451e6a74ec565baaeda053a0af21823683805b843daa50c36"
+        }
+      ],
+      "confidence": "high",
+      "criticality": "critical",
+      "securityRelevant": false,
+      "dataRelevant": true,
+      "owner": "urn:groundtrail-example:owner:cinder-checkout-api",
+      "runbook": "urn:groundtrail-example:runbook:checkout-rollback"
+    }
+  ],
+  "unknowns": ["The telemetry sample does not isolate device-specific behavior."]
+}

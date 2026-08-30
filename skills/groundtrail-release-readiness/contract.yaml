@@ -1,0 +1,45 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: release-readiness
+version: 0.1.0
+stage: release
+summary: Assemble a release packet and explicit control requirements.
+triggers:
+  - assessment-complete
+  - release-preparation-requested
+requires:
+  artifacts:
+    - ground-packet
+    - verification-matrix
+    - claim-record
+    - source-record-reference
+    - security-findings
+    - required-source-list
+  states:
+    - assessing
+produces:
+  artifacts:
+    - release-packet
+  states:
+    - release_ready
+composition:
+  after:
+    - change-assessment
+  before:
+    - production-observation
+permissions:
+  filesystem: write
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: gated
+actionBand:
+  maximum: gated
+controlPoints:
+  enter:
+    - assessment-complete
+  exit:
+    - release-authorized
+sourceRequirements: []
+freshness:
+  bindToRevision: true

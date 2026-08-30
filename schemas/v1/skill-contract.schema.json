@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/bajrang0789/agentic-sdlc-kit/main/schemas/v1/skill-contract.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "id",
+    "version",
+    "stage",
+    "summary",
+    "triggers",
+    "requires",
+    "produces",
+    "composition",
+    "permissions",
+    "actionBand",
+    "controlPoints",
+    "sourceRequirements",
+    "freshness"
+  ],
+  "properties": {
+    "apiVersion": { "const": "agentic-sdlc-kit/v1alpha1" },
+    "kind": { "const": "Skill" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,62}$" },
+    "version": { "type": "string", "pattern": "^0\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+    "stage": {
+      "enum": [
+        "discovery",
+        "requirements",
+        "planning",
+        "implementation",
+        "testing",
+        "review",
+        "security",
+        "release",
+        "production",
+        "learning",
+        "handoff"
+      ]
+    },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "triggers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "uniqueItems": true
+    },
+    "requires": { "$ref": "#/$defs/io" },
+    "produces": { "$ref": "#/$defs/io" },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["after", "before"],
+      "properties": { "after": { "$ref": "#/$defs/ids" }, "before": { "$ref": "#/$defs/ids" } }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filesystem", "shell", "network", "secrets", "externalMutation"],
+      "properties": {
+        "filesystem": { "enum": ["deny", "read", "write"] },
+        "shell": { "enum": ["deny", "allowlisted"] },
+        "network": { "enum": ["deny", "allowlisted"] },
+        "secrets": { "enum": ["deny", "read"] },
+        "externalMutation": { "enum": ["deny", "gated", "delegated"] }
+      }
+    },
+    "actionBand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maximum"],
+      "properties": { "maximum": { "$ref": "common.schema.json#/$defs/actionBand" } }
+    },
+    "controlPoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enter", "exit"],
+      "properties": { "enter": { "$ref": "#/$defs/ids" }, "exit": { "$ref": "#/$defs/ids" } }
+    },
+    "sourceRequirements": { "$ref": "#/$defs/ids" },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bindToRevision"],
+      "properties": { "bindToRevision": { "type": "boolean" } }
+    }
+  },
+  "$defs": {
+    "ids": {
+      "type": "array",
+      "maxItems": 64,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,62}$" },
+      "uniqueItems": true
+    },
+    "io": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifacts", "states"],
+      "properties": {
+        "artifacts": { "$ref": "#/$defs/ids" },
+        "states": {
+          "type": "array",
+          "maxItems": 16,
+          "items": { "$ref": "common.schema.json#/$defs/trackState" },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

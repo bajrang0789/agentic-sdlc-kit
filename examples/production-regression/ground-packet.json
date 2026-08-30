@@ -1,0 +1,50 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-production-regression-01",
+  "repository": {
+    "id": "cinder-checkout",
+    "revision": "e51fc24",
+    "uri": "urn:groundtrail-example:repository:cinder-checkout"
+  },
+  "intendedOutcome": "Reduce duplicate checkout retry messages without altering the payment workflow.",
+  "acceptanceCriteria": [
+    "The release remains within the checkout error budget.",
+    "Regression evidence triggers the documented rollback path."
+  ],
+  "constraints": [
+    "Do not edit the released thread after rollback.",
+    "Create follow-up work as a linked Change Thread."
+  ],
+  "repositoryMap": {
+    "id": "repository-map-production-01",
+    "uri": "urn:groundtrail-example:repository-map-production-01",
+    "digest": "7bdc16eaf56bf6918564446ae57c34d1268d34da04da3ae7a8e15a43815b5d7a"
+  },
+  "reachMap": {
+    "id": "reach-map-production-01",
+    "uri": "urn:groundtrail-example:production-regression:reach-map",
+    "digest": "49f0f79293a52154f762c99d2176f074bcfcd71289370d06b38d080372cb01f9"
+  },
+  "actionBand": "gated",
+  "trackState": "completed",
+  "controlPoints": ["observation-complete"],
+  "knownUnknowns": ["The telemetry sample does not isolate device-specific behavior."],
+  "sourceReferences": [
+    {
+      "id": "src-deployment-regression-01",
+      "uri": "urn:groundtrail-example:production-regression:source:src-deployment-regression-01",
+      "digest": "a0dd8b994a5b218634d89bad6ed6c80ed47562a6b17c25187b0856acc3eb812f"
+    },
+    {
+      "id": "src-telemetry-regression-01",
+      "uri": "urn:groundtrail-example:production-regression:source:src-telemetry-regression-01",
+      "digest": "a3027af7a408dd682a92f9b5b552cc0c84c2536a9edd10c146ccec901ecd87e6"
+    },
+    {
+      "id": "src-rollback-regression-01",
+      "uri": "urn:groundtrail-example:production-regression:source:src-rollback-regression-01",
+      "digest": "61579677e917c579fa9f966f3f966632b65481e890e9288403eb6df5fa17121e"
+    }
+  ],
+  "expiresAt": "2026-09-06T00:00:00Z"
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/bajrang0789/agentic-sdlc-kit/main/schemas/v1/common.schema.json",
+  "title": "Groundtrail v1 common definitions",
+  "$defs": {
+    "digest": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "uuid": { "type": "string", "format": "uuid" },
+    "timestamp": { "type": "string", "format": "date-time", "maxLength": 64 },
+    "uri": { "type": "string", "format": "uri", "maxLength": 2048 },
+    "revision": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9._:/@+-]+$"
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "revision"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "revision": { "$ref": "#/$defs/revision" },
+        "uri": { "$ref": "#/$defs/uri" }
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "uri": { "$ref": "#/$defs/uri" },
+        "digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "actionBand": { "enum": ["observe", "recommend", "workspace", "gated", "delegated"] },
+    "trackState": {
+      "enum": [
+        "unframed",
+        "framed",
+        "planned",
+        "implementing",
+        "verifying",
+        "assessing",
+        "release_ready",
+        "releasing",
+        "observing",
+        "completed",
+        "needs_input",
+        "blocked",
+        "changes_required",
+        "release_failed",
+        "regressed",
+        "rolled_back",
+        "cancelled"
+      ]
+    }
+  }
+}

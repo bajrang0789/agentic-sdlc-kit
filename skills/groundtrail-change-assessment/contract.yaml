@@ -1,0 +1,46 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: change-assessment
+version: 0.1.0
+stage: review
+summary: Independently assess scope, correctness, and evidence freshness.
+triggers:
+  - verification-and-security-review-complete
+  - assessment-stale
+requires:
+  artifacts:
+    - ground-packet
+    - change-chart
+    - verification-matrix
+    - claim-record
+    - security-findings
+    - required-source-list
+  states:
+    - verifying
+produces:
+  artifacts:
+    - claim-record
+    - trail-record
+  states:
+    - assessing
+composition:
+  after:
+    - security-assessment
+  before:
+    - release-readiness
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: recommend
+controlPoints:
+  enter:
+    - verification-sources-current
+  exit:
+    - assessment-complete
+sourceRequirements: []
+freshness:
+  bindToRevision: true

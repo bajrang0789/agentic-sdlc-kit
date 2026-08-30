@@ -1,0 +1,44 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: production-observation
+version: 0.1.0
+stage: production
+summary: Compare deployed source evidence with expected outcomes.
+triggers:
+  - post-release-observation-window
+  - regression-investigation
+requires:
+  artifacts:
+    - ground-packet
+    - release-packet
+    - source-record-reference
+  states:
+    - releasing
+produces:
+  artifacts:
+    - trail-record
+    - observation-record
+    - source-record-reference
+  states:
+    - observing
+composition:
+  after:
+    - release-readiness
+  before:
+    - incident-learning
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: observe
+controlPoints:
+  enter:
+    - release-authorized
+  exit:
+    - observation-complete
+sourceRequirements: []
+freshness:
+  bindToRevision: true

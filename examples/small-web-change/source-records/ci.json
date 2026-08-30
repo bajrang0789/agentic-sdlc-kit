@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-ci-small-web-01",
+  "issuer": {
+    "id": "forge-ci",
+    "type": "ci"
+  },
+  "sourceType": "ci",
+  "subject": {
+    "id": "opal-portal",
+    "revision": "a14be72",
+    "uri": "urn:groundtrail-example:repository:opal-portal"
+  },
+  "evidenceType": "unit-and-browser-checks",
+  "result": "pass",
+  "artifact": {
+    "id": "src-ci-small-web-01-artifact",
+    "uri": "urn:groundtrail-example:src-ci-small-web-01-artifact",
+    "digest": "63b6f5edb4ca010277960f3004a1dcf8cc0615a4360145b0a6f7939f3ee3d684"
+  },
+  "observedAt": "2026-08-30T09:20:00Z",
+  "collectionMethod": "automated"
+}

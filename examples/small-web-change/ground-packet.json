@@ -1,0 +1,40 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-small-web-01",
+  "repository": {
+    "id": "opal-portal",
+    "revision": "a14be72",
+    "uri": "urn:groundtrail-example:repository:opal-portal"
+  },
+  "intendedOutcome": "Add a compact account-status notice to the profile page without changing account data.",
+  "acceptanceCriteria": [
+    "The notice appears for the documented profile state.",
+    "Existing profile interactions continue to pass browser checks."
+  ],
+  "constraints": [
+    "Edit only the profile presentation path.",
+    "Do not add a network request or collect new data."
+  ],
+  "repositoryMap": {
+    "id": "repository-map-small-web-01",
+    "uri": "urn:groundtrail-example:repository-map-small-web-01",
+    "digest": "6ea953fcd0efc336e01532e3c612b96e33ae37846cd4bc95b61f186285e6d47c"
+  },
+  "reachMap": {
+    "id": "reach-map-small-web-01",
+    "uri": "urn:groundtrail-example:small-web-change:reach-map",
+    "digest": "56edd58ba3c7fbc09b9b1c66a3124c9ca271d23c161c52c1c5f37b8cfcb61212"
+  },
+  "actionBand": "workspace",
+  "trackState": "completed",
+  "controlPoints": ["verification-sources-current"],
+  "knownUnknowns": [],
+  "sourceReferences": [
+    {
+      "id": "src-ci-small-web-01",
+      "uri": "urn:groundtrail-example:small-web-change:source:ci",
+      "digest": "9fd2412a5e914ccd0defd525e84815a5cd32bb77290a54ae69081e534d519859"
+    }
+  ],
+  "expiresAt": "2026-09-06T00:00:00Z"
+}

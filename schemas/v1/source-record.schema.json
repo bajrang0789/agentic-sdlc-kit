@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/bajrang0789/agentic-sdlc-kit/main/schemas/v1/source-record.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "id",
+    "issuer",
+    "sourceType",
+    "subject",
+    "evidenceType",
+    "result",
+    "observedAt",
+    "collectionMethod"
+  ],
+  "properties": {
+    "apiVersion": { "const": "agentic-sdlc-kit/v1" },
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "issuer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "type": {
+          "enum": [
+            "ci",
+            "code-review",
+            "scanner",
+            "deployment-system",
+            "telemetry-provider",
+            "authorized-human",
+            "policy-system"
+          ]
+        }
+      }
+    },
+    "sourceType": {
+      "enum": ["ci", "code-review", "scanner", "deployment", "telemetry", "approval", "policy"]
+    },
+    "subject": { "$ref": "common.schema.json#/$defs/repository" },
+    "evidenceType": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "result": { "enum": ["pass", "fail", "warning", "approved", "rejected", "observed"] },
+    "artifact": { "$ref": "common.schema.json#/$defs/sourceReference" },
+    "observedAt": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expiresAt": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "collectionMethod": { "enum": ["automated", "manual", "imported"] }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-security-boundary-01",
+  "repository": "ember-vault",
+  "revision": "d49eb13",
+  "entries": [
+    {
+      "service": "ember-session-gateway",
+      "relation": "security",
+      "derivation": "observed",
+      "sourceReferences": [
+        {
+          "id": "security-boundary-map-01",
+          "uri": "urn:groundtrail-example:security-boundary-map-01",
+          "digest": "9b8f702e44da12b5ab4d140b3b1ec970c578bc02342434aa41e64a4a5c1e3956"
+        }
+      ],
+      "confidence": "high",
+      "criticality": "critical",
+      "securityRelevant": true,
+      "dataRelevant": true,
+      "owner": "urn:groundtrail-example:owner:ember-session-gateway",
+      "runbook": "urn:groundtrail-example:runbook:session-revocation"
+    }
+  ],
+  "unknowns": ["The legacy scanner signature has no machine-readable remediation location."]
+}

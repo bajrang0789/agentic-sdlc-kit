@@ -1,0 +1,589 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "provider": "copilot",
+  "version": "0.1.0",
+  "canonicalSkills": [
+    {
+      "id": "bounded-implementation",
+      "version": "0.1.0",
+      "digest": "bb9cf5cb608ae0e060abc80312e02049cfef3938bc42126bba14c0f538f1f6c8",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [
+          "implementation-chart-approved"
+        ],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart"
+        ],
+        "states": [
+          "planned",
+          "changes_required"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "handoff-bundle"
+        ],
+        "states": [
+          "implementing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "change-assessment",
+      "version": "0.1.0",
+      "digest": "9bb6d98206c5f43f267700c73a9d632784cace8c761a880a6d594a2a1ea46f10",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "verification-sources-current"
+        ],
+        "exit": [
+          "assessment-complete"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "verification-matrix",
+          "claim-record",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "trail-record"
+        ],
+        "states": [
+          "assessing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "change-charting",
+      "version": "0.1.0",
+      "digest": "7c6453e8696e90fd3ff5e8906ffb59a80f8b9ed8a039ab2e95c46cb40a4cbb3a",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "context-bounded"
+        ],
+        "exit": [
+          "implementation-chart-approved"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "repository-map",
+          "requirement-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "change-chart",
+          "reach-map",
+          "trail-record"
+        ],
+        "states": [
+          "planned"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "evidence-handoff",
+      "version": "0.1.0",
+      "digest": "e8a01a43089d4e286b95a4b55668f33199059b14e9eacff887bdf9b0e402f865",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet"
+        ],
+        "states": [
+          "unframed",
+          "framed",
+          "planned",
+          "implementing",
+          "verifying",
+          "assessing",
+          "release_ready",
+          "releasing",
+          "observing",
+          "needs_input",
+          "blocked",
+          "changes_required",
+          "release_failed",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "handoff-bundle",
+          "trail-record"
+        ],
+        "states": [
+          "unframed",
+          "framed",
+          "planned",
+          "implementing",
+          "verifying",
+          "assessing",
+          "release_ready",
+          "releasing",
+          "observing",
+          "needs_input",
+          "blocked",
+          "changes_required",
+          "release_failed",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "incident-learning",
+      "version": "0.1.0",
+      "digest": "cfa063508631a37d0a06438ce60e4fa492da4f1aea68cb14ab100a84f2ec3de6",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "source-record-reference",
+          "trail-record",
+          "observation-record"
+        ],
+        "states": [
+          "observing",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "trail-record",
+          "ground-packet"
+        ],
+        "states": [
+          "observing",
+          "regressed",
+          "rolled_back",
+          "completed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "intent-framing",
+      "version": "0.1.0",
+      "digest": "60847ff06158806ed83c91eaa3ea6b93d0950bc1ab389aaed82ccd55356adcfd",
+      "actionBand": "recommend",
+      "controlPoints": {
+        "enter": [
+          "context-bounded"
+        ],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "repository-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "ground-packet",
+          "requirement-map"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "production-observation",
+      "version": "0.1.0",
+      "digest": "485169c591d699f7b3d210948e34a5b9a0bfac3ad182d914f9b4999350088421",
+      "actionBand": "observe",
+      "controlPoints": {
+        "enter": [
+          "release-authorized"
+        ],
+        "exit": [
+          "observation-complete"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "release-packet",
+          "source-record-reference"
+        ],
+        "states": [
+          "releasing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "trail-record",
+          "observation-record",
+          "source-record-reference"
+        ],
+        "states": [
+          "observing"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "release-readiness",
+      "version": "0.1.0",
+      "digest": "55b785b8bd8730bb561c1e4b64234ae4efc1d85ad98de87034a53c66e3c38fd9",
+      "actionBand": "gated",
+      "controlPoints": {
+        "enter": [
+          "assessment-complete"
+        ],
+        "exit": [
+          "release-authorized"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "verification-matrix",
+          "claim-record",
+          "source-record-reference",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "assessing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "release-packet"
+        ],
+        "states": [
+          "release_ready"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "gated"
+      },
+      "reductions": []
+    },
+    {
+      "id": "repository-discovery",
+      "version": "0.1.0",
+      "digest": "293705e2f39e623e1d6f1282d30eeb7c4c86d7165bc1aceef8b204c861e4c723",
+      "actionBand": "observe",
+      "controlPoints": {
+        "enter": [],
+        "exit": [
+          "context-bounded"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet"
+        ],
+        "states": [
+          "unframed"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "repository-map",
+          "trail-record"
+        ],
+        "states": [
+          "framed"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "read",
+        "shell": "deny",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "security-assessment",
+      "version": "0.1.0",
+      "digest": "951a0c5af4ae535ed2316c385e309d9221bd9c49be699f34b92639a376494253",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [],
+        "exit": []
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "verification-matrix",
+          "source-record-reference"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "claim-record",
+          "security-findings",
+          "required-source-list"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    },
+    {
+      "id": "verification-matrix",
+      "version": "0.1.0",
+      "digest": "150baa91aaaba2e54715352e46e5cc0d5a77f09841cc9d2c2ec61b06200716af",
+      "actionBand": "workspace",
+      "controlPoints": {
+        "enter": [],
+        "exit": [
+          "verification-sources-current"
+        ]
+      },
+      "requires": {
+        "artifacts": [
+          "ground-packet",
+          "change-chart",
+          "claim-record"
+        ],
+        "states": [
+          "implementing"
+        ]
+      },
+      "produces": {
+        "artifacts": [
+          "verification-matrix",
+          "claim-record",
+          "source-record-reference"
+        ],
+        "states": [
+          "verifying"
+        ]
+      },
+      "freshness": {
+        "bindToRevision": true
+      },
+      "permissions": {
+        "filesystem": "write",
+        "shell": "allowlisted",
+        "network": "deny",
+        "secrets": "deny",
+        "externalMutation": "deny"
+      },
+      "reductions": []
+    }
+  ],
+  "canonicalTreeDigest": "5d6251d26c16edbda5749df06602fb1978dc796086daeea2b59792656f660631",
+  "payloadTreeDigest": "aebc4a600fee93696e62160cdd8cf638b493f123e08a4f4c460442f16bdf5639",
+  "files": [
+    {
+      "path": ".github/agents/groundtrail-builder.agent.md",
+      "digest": "d4c29e1d29a7955f6317d1fe578a5a014a2b451de9312f98242232a6f145e41e"
+    },
+    {
+      "path": ".github/agents/groundtrail-planner.agent.md",
+      "digest": "04c043c1169fe44280cc1ef76b4a7e512831808ce42886465f32f777daf16f94"
+    },
+    {
+      "path": ".github/agents/groundtrail-release-steward.agent.md",
+      "digest": "a365d5f13cd7ef26f0b37cf93c340fbdb3e13607edc84e04441c2561f6480f31"
+    },
+    {
+      "path": ".github/agents/groundtrail-verifier.agent.md",
+      "digest": "2b0cf2c29e06f778baaa7d426218e87424cec2dcc355e1769185204d088f17d9"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "digest": "2293d58bd944d33d0fd7ee07bee498dda9f5d41563cb6d717241f6bccecee086"
+    },
+    {
+      "path": ".github/instructions/groundtrail.instructions.md",
+      "digest": "e1e65358252706af4657bb6b2df4a7636556bf70ef1e7597fa7c1ab215e99bdb"
+    },
+    {
+      "path": ".github/skills/groundtrail-bounded-implementation/SKILL.md",
+      "digest": "18ccf2e8d3c4f28a2eb9ed0e147136f47b1468f55fd438f26c2aa1b2c6bb4125"
+    },
+    {
+      "path": ".github/skills/groundtrail-change-assessment/SKILL.md",
+      "digest": "7cdc30c13a166a83e8fb1a473b346e9d8db7ff8ea1eb1c0ffefb8d5f47fdb39f"
+    },
+    {
+      "path": ".github/skills/groundtrail-change-charting/SKILL.md",
+      "digest": "6dbd7989e8b36ac8705e90575a6bdb01affae3b1515cae3c03a5001c25b70d32"
+    },
+    {
+      "path": ".github/skills/groundtrail-evidence-handoff/SKILL.md",
+      "digest": "5dfb3d7c1a40390a44a2fbf13143ef6ce627815324a0b2e48d4fab9067b8134a"
+    },
+    {
+      "path": ".github/skills/groundtrail-incident-learning/SKILL.md",
+      "digest": "54aa61c89e1d91b31cca2249e76ee1d91122b3f819e7e62d00bb022901efe202"
+    },
+    {
+      "path": ".github/skills/groundtrail-intent-framing/SKILL.md",
+      "digest": "261ffa0399a87f9b5c441e6e1854978ca36f08ff388c7a83dc90916d7f66734a"
+    },
+    {
+      "path": ".github/skills/groundtrail-production-observation/SKILL.md",
+      "digest": "1453927785df1371945c9795b8a3fea3b9458f4846d3ebdb8c5bdeb886dbbe4d"
+    },
+    {
+      "path": ".github/skills/groundtrail-release-readiness/SKILL.md",
+      "digest": "6efa7a2991d691534466291d05376f2b087a64de2574a20a36d687064ff26c90"
+    },
+    {
+      "path": ".github/skills/groundtrail-repository-discovery/SKILL.md",
+      "digest": "cb1acf503f3491cf5e95597c5d0db2b7491704f10b04ebb14b0af1622441c4ca"
+    },
+    {
+      "path": ".github/skills/groundtrail-security-assessment/SKILL.md",
+      "digest": "ff9219d6265288296cb8a57bff3d5ad55bb4637c23b8dbd31bd81417d29f83b9"
+    },
+    {
+      "path": ".github/skills/groundtrail-verification-matrix/SKILL.md",
+      "digest": "635393f2e359d9316e11272492ba922e0c549430fcc89b32b9e496fa820bd5d8"
+    }
+  ],
+  "capabilityReductions": [
+    "Copilot skill frontmatter has no documented permission ceiling; canonical permissions remain in skill bodies and manifest metadata.",
+    "Focused custom agents use the strictest available tool alias set for their assigned skills."
+  ]
+}

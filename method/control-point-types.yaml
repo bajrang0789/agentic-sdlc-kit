@@ -1,0 +1,23 @@
+apiVersion: agentic-sdlc-kit/method/v1
+outcomes: [pending, satisfied, failed, waived, stale]
+principles:
+  - A Claim Record is context only and never satisfies a Control Point.
+  - A satisfied Control Point requires at least one current Source Record from an allowed authority.
+  - A stale Control Point must be reevaluated before its guarded action.
+waiver:
+  requiredSource: authorized-human-or-policy-system
+  requiredFields: [reason, scope, expiresAt, revision]
+  revisionBound: true
+controlPointTypes:
+  - id: context-bounded
+    description: Repository context and unknowns are recorded before framing completes.
+  - id: implementation-chart-approved
+    description: A change chart and required decisions are available before implementation.
+  - id: verification-sources-current
+    description: Required revision-bound verification sources are current.
+  - id: assessment-complete
+    description: Independent assessment findings have a recorded outcome.
+  - id: release-authorized
+    description: Authorized current sources permit the listed release action.
+  - id: observation-complete
+    description: Post-release source evidence has been assessed.

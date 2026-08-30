@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-rollback-regression-01",
+  "issuer": {
+    "id": "release-orbit",
+    "type": "deployment-system"
+  },
+  "sourceType": "deployment",
+  "subject": {
+    "id": "cinder-checkout",
+    "revision": "e51fc24",
+    "uri": "urn:groundtrail-example:repository:cinder-checkout"
+  },
+  "evidenceType": "rollback-complete",
+  "result": "pass",
+  "artifact": {
+    "id": "src-rollback-regression-01-artifact",
+    "uri": "urn:groundtrail-example:src-rollback-regression-01-artifact",
+    "digest": "101c98b28515b6a4fbd84c0c0bec09d5e315d17723c98f59a03419a84c8449da"
+  },
+  "observedAt": "2026-08-30T12:35:00Z",
+  "collectionMethod": "automated"
+}

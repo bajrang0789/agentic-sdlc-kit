@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-scanner-security-01",
+  "issuer": {
+    "id": "sentinel-scan",
+    "type": "scanner"
+  },
+  "sourceType": "scanner",
+  "subject": {
+    "id": "ember-vault",
+    "revision": "d49eb13",
+    "uri": "urn:groundtrail-example:repository:ember-vault"
+  },
+  "evidenceType": "dependency-and-secret-scan",
+  "result": "pass",
+  "artifact": {
+    "id": "src-scanner-security-01-artifact",
+    "uri": "urn:groundtrail-example:src-scanner-security-01-artifact",
+    "digest": "dca0e10dc997887a1edaa2609eb6312991936f380e63b9f47173bf3c567114c4"
+  },
+  "observedAt": "2026-08-30T11:20:00Z",
+  "collectionMethod": "automated"
+}

@@ -1,0 +1,12 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "observation-complete",
+  "version": "1",
+  "status": "satisfied",
+  "requiredSourceTypes": ["deployment"],
+  "requiredIssuers": ["release-orbit"],
+  "revision": "e51fc24",
+  "freshnessRequired": true,
+  "satisfiedBy": ["src-rollback-regression-01"],
+  "decidedAt": "2026-08-30T12:40:00Z"
+}

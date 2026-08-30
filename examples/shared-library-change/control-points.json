@@ -1,0 +1,11 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "verification-sources-current",
+  "version": "1",
+  "status": "stale",
+  "requiredSourceTypes": ["ci"],
+  "requiredIssuers": ["forge-ci"],
+  "revision": "c38da02",
+  "freshnessRequired": true,
+  "decidedAt": "2026-08-30T10:32:00Z"
+}

@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-review-security-01",
+  "issuer": {
+    "id": "review-council",
+    "type": "code-review"
+  },
+  "sourceType": "code-review",
+  "subject": {
+    "id": "ember-vault",
+    "revision": "d49eb13",
+    "uri": "urn:groundtrail-example:repository:ember-vault"
+  },
+  "evidenceType": "security-boundary-review",
+  "result": "approved",
+  "artifact": {
+    "id": "src-review-security-01-artifact",
+    "uri": "urn:groundtrail-example:src-review-security-01-artifact",
+    "digest": "f1578b6e5a9a851b042fc420e793bd564e951672d24b813b0015d82b9d687e3f"
+  },
+  "observedAt": "2026-08-30T11:35:00Z",
+  "collectionMethod": "automated"
+}

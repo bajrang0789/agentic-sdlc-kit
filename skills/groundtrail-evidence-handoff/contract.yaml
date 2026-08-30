@@ -1,0 +1,68 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: evidence-handoff
+version: 0.1.0
+stage: handoff
+summary: Package current state, evidence references, freshness, and next controls.
+triggers:
+  - work-handoff
+  - work-paused
+  - evidence-summary-requested
+requires:
+  artifacts:
+    - ground-packet
+  states:
+    - unframed
+    - framed
+    - planned
+    - implementing
+    - verifying
+    - assessing
+    - release_ready
+    - releasing
+    - observing
+    - needs_input
+    - blocked
+    - changes_required
+    - release_failed
+    - regressed
+    - rolled_back
+    - completed
+produces:
+  artifacts:
+    - handoff-bundle
+    - trail-record
+  states:
+    - unframed
+    - framed
+    - planned
+    - implementing
+    - verifying
+    - assessing
+    - release_ready
+    - releasing
+    - observing
+    - needs_input
+    - blocked
+    - changes_required
+    - release_failed
+    - regressed
+    - rolled_back
+    - completed
+composition:
+  after: []
+  before: []
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: recommend
+controlPoints:
+  enter: []
+  exit: []
+sourceRequirements: []
+freshness:
+  bindToRevision: true

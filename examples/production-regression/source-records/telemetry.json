@@ -1,0 +1,23 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "id": "src-telemetry-regression-01",
+  "issuer": {
+    "id": "metric-lake",
+    "type": "telemetry-provider"
+  },
+  "sourceType": "telemetry",
+  "subject": {
+    "id": "cinder-checkout",
+    "revision": "e51fc24",
+    "uri": "urn:groundtrail-example:repository:cinder-checkout"
+  },
+  "evidenceType": "checkout-error-rate",
+  "result": "warning",
+  "artifact": {
+    "id": "src-telemetry-regression-01-artifact",
+    "uri": "urn:groundtrail-example:src-telemetry-regression-01-artifact",
+    "digest": "9c27911229cce290e7375d32accbe6999dcf187ae91f00f80370fdc491de8994"
+  },
+  "observedAt": "2026-08-30T12:28:00Z",
+  "collectionMethod": "automated"
+}

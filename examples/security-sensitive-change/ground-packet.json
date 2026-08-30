@@ -1,0 +1,50 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-security-boundary-01",
+  "repository": {
+    "id": "ember-vault",
+    "revision": "d49eb13",
+    "uri": "urn:groundtrail-example:repository:ember-vault"
+  },
+  "intendedOutcome": "Rotate the session-token audience check without broadening token acceptance.",
+  "acceptanceCriteria": [
+    "Only the registered audience is accepted.",
+    "Scanner and independent security review evidence are current."
+  ],
+  "constraints": [
+    "External release action remains gated.",
+    "An agent claim cannot authorize the release."
+  ],
+  "repositoryMap": {
+    "id": "repository-map-security-01",
+    "uri": "urn:groundtrail-example:repository-map-security-01",
+    "digest": "7378c27b461fbe4a2a7a70963cb1f5fa2442fa79e12de209a6156aafa5fb3d9b"
+  },
+  "reachMap": {
+    "id": "reach-map-security-01",
+    "uri": "urn:groundtrail-example:security-sensitive-change:reach-map",
+    "digest": "56ac56464620d82a9b0071df25656e08545221820861bccd2e8eea27dc454dda"
+  },
+  "actionBand": "gated",
+  "trackState": "release_ready",
+  "controlPoints": ["legacy-scanner-finding-waiver"],
+  "knownUnknowns": ["The legacy scanner signature has no machine-readable remediation location."],
+  "sourceReferences": [
+    {
+      "id": "src-scanner-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-scanner-security-01",
+      "digest": "62632dcf2cd1ee2db51aef06f63940c7d195c13bf1d4de0c991d9918911e3782"
+    },
+    {
+      "id": "src-review-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-review-security-01",
+      "digest": "e62844c9098f37e811d74f6f0904eb049cafe3bfbc303af65a35862a2f080bf4"
+    },
+    {
+      "id": "src-waiver-security-01",
+      "uri": "urn:groundtrail-example:security-sensitive-change:source:src-waiver-security-01",
+      "digest": "c7bbefc5fe6c39d88490811f97e37a40f65b71caeace33e8745961c7a6ade96a"
+    }
+  ],
+  "expiresAt": "2026-09-02T11:40:00Z"
+}

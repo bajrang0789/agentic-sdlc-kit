@@ -1,0 +1,42 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: bounded-implementation
+version: 0.1.0
+stage: implementation
+summary: Implement only the approved chart in the local workspace.
+triggers:
+  - implementation-chart-approved
+  - changes-required
+requires:
+  artifacts:
+    - ground-packet
+    - change-chart
+  states:
+    - planned
+    - changes_required
+produces:
+  artifacts:
+    - claim-record
+    - handoff-bundle
+  states:
+    - implementing
+composition:
+  after:
+    - change-charting
+  before:
+    - verification-matrix
+permissions:
+  filesystem: write
+  shell: allowlisted
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: workspace
+controlPoints:
+  enter:
+    - implementation-chart-approved
+  exit: []
+sourceRequirements: []
+freshness:
+  bindToRevision: true

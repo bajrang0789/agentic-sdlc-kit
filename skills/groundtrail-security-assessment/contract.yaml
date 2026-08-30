@@ -1,0 +1,43 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: security-assessment
+version: 0.1.0
+stage: security
+summary: Assess security boundaries and required evidence for the current change.
+triggers:
+  - security-review-required
+  - verification-material-available
+requires:
+  artifacts:
+    - ground-packet
+    - change-chart
+    - verification-matrix
+    - source-record-reference
+  states:
+    - verifying
+produces:
+  artifacts:
+    - claim-record
+    - security-findings
+    - required-source-list
+  states:
+    - verifying
+composition:
+  after:
+    - verification-matrix
+  before:
+    - change-assessment
+permissions:
+  filesystem: write
+  shell: allowlisted
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: workspace
+controlPoints:
+  enter: []
+  exit: []
+sourceRequirements: []
+freshness:
+  bindToRevision: true

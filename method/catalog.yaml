@@ -1,0 +1,29 @@
+apiVersion: agentic-sdlc-kit/method/v1
+artifacts:
+  - ground-packet
+  - repository-map
+  - requirement-map
+  - change-chart
+  - reach-map
+  - verification-matrix
+  - release-packet
+  - handoff-bundle
+  - trail-record
+  - claim-record
+  - source-record
+  - observation-record
+  - required-source-list
+  - security-findings
+  - source-record-reference
+skills:
+  - id: bounded-implementation
+  - id: change-assessment
+  - id: change-charting
+  - id: evidence-handoff
+  - id: incident-learning
+  - id: intent-framing
+  - id: production-observation
+  - id: release-readiness
+  - id: repository-discovery
+  - id: security-assessment
+  - id: verification-matrix

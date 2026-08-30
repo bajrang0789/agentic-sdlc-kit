@@ -1,0 +1,44 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: change-charting
+version: 0.1.0
+stage: planning
+summary: Create a bounded implementation chart with testable steps.
+triggers:
+  - intent-framed
+  - change-needs-replanning
+requires:
+  artifacts:
+    - ground-packet
+    - repository-map
+    - requirement-map
+  states:
+    - framed
+produces:
+  artifacts:
+    - change-chart
+    - reach-map
+    - trail-record
+  states:
+    - planned
+composition:
+  after:
+    - intent-framing
+  before:
+    - bounded-implementation
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: recommend
+controlPoints:
+  enter:
+    - context-bounded
+  exit:
+    - implementation-chart-approved
+sourceRequirements: []
+freshness:
+  bindToRevision: true

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/bajrang0789/agentic-sdlc-kit/main/schemas/v1/installation-manifest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "manifestVersion",
+    "generation",
+    "packageVersion",
+    "providers",
+    "managedEntries"
+  ],
+  "properties": {
+    "apiVersion": { "const": "agentic-sdlc-kit/installation/v1" },
+    "manifestVersion": { "const": 1 },
+    "generation": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "packageVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "providers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["mode", "skills", "carrierDigest"],
+        "properties": {
+          "mode": { "const": "project" },
+          "skills": {
+            "type": "array",
+            "maxItems": 64,
+            "items": { "$ref": "common.schema.json#/$defs/id" },
+            "uniqueItems": true
+          },
+          "carrierDigest": { "$ref": "common.schema.json#/$defs/digest" }
+        }
+      }
+    },
+    "managedEntries": { "$ref": "#/$defs/entries" },
+    "sharedEntries": { "$ref": "#/$defs/entries" },
+    "lastCompletedTransaction": { "$ref": "common.schema.json#/$defs/uuid" },
+    "updateProvenance": {
+      "type": "array",
+      "maxItems": 128,
+      "items": { "type": "string", "maxLength": 1024 }
+    }
+  },
+  "$defs": {
+    "entries": {
+      "type": "array",
+      "maxItems": 8192,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "kind", "owners", "digest"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?/)[^\\u0000]+$",
+            "maxLength": 1024
+          },
+          "kind": { "enum": ["file", "block"] },
+          "blockId": { "type": "string", "maxLength": 256 },
+          "owners": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": { "enum": ["claude", "codex", "copilot", "devin"] },
+            "uniqueItems": true
+          },
+          "digest": { "$ref": "common.schema.json#/$defs/digest" }
+        }
+      }
+    }
+  }
+}

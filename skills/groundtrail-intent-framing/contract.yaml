@@ -1,0 +1,41 @@
+apiVersion: agentic-sdlc-kit/v1alpha1
+kind: Skill
+id: intent-framing
+version: 0.1.0
+stage: requirements
+summary: Bind intent and constraints to the discovered repository context.
+triggers:
+  - repository-discovery-complete
+  - stale-intent-or-revision
+requires:
+  artifacts:
+    - ground-packet
+    - repository-map
+  states:
+    - framed
+produces:
+  artifacts:
+    - ground-packet
+    - requirement-map
+  states:
+    - framed
+composition:
+  after:
+    - repository-discovery
+  before:
+    - change-charting
+permissions:
+  filesystem: read
+  shell: deny
+  network: deny
+  secrets: deny
+  externalMutation: deny
+actionBand:
+  maximum: recommend
+controlPoints:
+  enter:
+    - context-bounded
+  exit: []
+sourceRequirements: []
+freshness:
+  bindToRevision: true

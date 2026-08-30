@@ -1,0 +1,5 @@
+# Keep source and generated text byte-stable across operating systems.
+* text=auto eol=lf
+
+# Preserve byte-level fixtures and suppress text diff whitespace normalization.
+test/vectors/trees/crlf.txt -text -diff

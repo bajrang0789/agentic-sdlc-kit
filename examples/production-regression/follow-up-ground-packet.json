@@ -1,0 +1,33 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-production-regression-02",
+  "supersedesThreadId": "thread-production-regression-01",
+  "repository": {
+    "id": "cinder-checkout",
+    "revision": "e51fc24",
+    "uri": "urn:groundtrail-example:repository:cinder-checkout"
+  },
+  "intendedOutcome": "Determine why the checkout retry message release raised the observed error rate and propose a bounded correction.",
+  "acceptanceCriteria": [
+    "Reproduce or bound the regression cause with source evidence.",
+    "Do not change the completed release thread."
+  ],
+  "constraints": ["This is a new Change Thread linked to the rolled-back release."],
+  "repositoryMap": {
+    "id": "repository-map-production-followup-01",
+    "uri": "urn:groundtrail-example:repository-map-production-followup-01",
+    "digest": "b58504e4fc222a1ff0ee14da550bfdee507274dd4c8a98be308f2c81289257dc"
+  },
+  "actionBand": "recommend",
+  "trackState": "planned",
+  "controlPoints": ["context-bounded"],
+  "knownUnknowns": ["Device-specific contribution remains unverified."],
+  "sourceReferences": [
+    {
+      "id": "src-telemetry-regression-01",
+      "uri": "urn:groundtrail-example:production-regression:source:src-telemetry-regression-01",
+      "digest": "a3027af7a408dd682a92f9b5b552cc0c84c2536a9edd10c146ccec901ecd87e6"
+    }
+  ],
+  "expiresAt": "2026-09-06T00:00:00Z"
+}

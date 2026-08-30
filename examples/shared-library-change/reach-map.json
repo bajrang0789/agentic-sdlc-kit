@@ -1,0 +1,60 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-shared-library-01",
+  "repository": "quartz-tools",
+  "revision": "c38da02",
+  "entries": [
+    {
+      "service": "quartz-formatters",
+      "relation": "direct",
+      "derivation": "observed",
+      "sourceReferences": [
+        {
+          "id": "shared-library-export-map-01",
+          "uri": "urn:groundtrail-example:shared-library-export-map-01",
+          "digest": "62fba9b29ca5abc4b50e6fde8cfe2a32cbe5530d8e6cb271bfb475a5064dcde1"
+        }
+      ],
+      "confidence": "high",
+      "criticality": "medium",
+      "securityRelevant": false,
+      "dataRelevant": false,
+      "owner": "urn:groundtrail-example:owner:quartz-formatters"
+    },
+    {
+      "service": "northstar-console",
+      "relation": "runtime-downstream",
+      "derivation": "inferred",
+      "sourceReferences": [
+        {
+          "id": "shared-library-import-graph-01",
+          "uri": "urn:groundtrail-example:shared-library-import-graph-01",
+          "digest": "988c1248011ed898d7dad7dcfa570fdae491fbbded390b32cfc68f199d923978"
+        }
+      ],
+      "confidence": "medium",
+      "criticality": "medium",
+      "securityRelevant": false,
+      "dataRelevant": false,
+      "owner": "urn:groundtrail-example:owner:northstar-console"
+    },
+    {
+      "service": "harbor-reports",
+      "relation": "runtime-downstream",
+      "derivation": "inferred",
+      "sourceReferences": [
+        {
+          "id": "shared-library-import-graph-01",
+          "uri": "urn:groundtrail-example:shared-library-import-graph-01",
+          "digest": "988c1248011ed898d7dad7dcfa570fdae491fbbded390b32cfc68f199d923978"
+        }
+      ],
+      "confidence": "medium",
+      "criticality": "high",
+      "securityRelevant": false,
+      "dataRelevant": false,
+      "owner": "urn:groundtrail-example:owner:harbor-reports"
+    }
+  ],
+  "unknowns": ["No runtime call graph was available for optional plug-in consumers."]
+}

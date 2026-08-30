@@ -1,0 +1,24 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-shared-library-01",
+  "groundPacketDigest": "fc25905dc8009cbf3d84d073980b9c19eaafc5fb7bd1343bfbc97fa91d22dc72",
+  "trackState": "implementing",
+  "completedWork": [
+    "Mapped direct shared code and two inferred downstream consumers.",
+    "Marked the prior CI evidence stale after revision c38da02."
+  ],
+  "changedPaths": ["packages/formatters/empty-label.ts", "packages/formatters/empty-label.test.ts"],
+  "decisions": ["shared-revision-invalidated-01"],
+  "claims": [],
+  "sourceReferences": [
+    {
+      "id": "src-ci-shared-library-old-01",
+      "uri": "urn:groundtrail-example:shared-library-change:source:old-ci",
+      "digest": "72194dfde699479537bdf1f7666c2b35959306b73661148e1e44b7eb66a85540"
+    }
+  ],
+  "outstandingControlPoints": ["verification-sources-current"],
+  "knownUnknowns": ["No runtime call graph was available for optional plug-in consumers."],
+  "nextSkills": ["verification-matrix", "evidence-handoff"],
+  "revision": "c38da02"
+}

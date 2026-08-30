@@ -1,0 +1,24 @@
+{
+  "apiVersion": "agentic-sdlc-kit/v1",
+  "threadId": "thread-small-web-01",
+  "groundPacketDigest": "163cf61d18a018f4895875c94f237879f751d76005ce8ebce83347660f981552",
+  "trackState": "completed",
+  "completedWork": [
+    "Added the profile notice within the bounded presentation path.",
+    "Collected a current CI Source Record."
+  ],
+  "changedPaths": ["app/profile/status-notice.tsx", "app/profile/status-notice.test.tsx"],
+  "decisions": ["small-web-assess-01"],
+  "claims": ["small-web-claim-01"],
+  "sourceReferences": [
+    {
+      "id": "src-ci-small-web-01",
+      "uri": "urn:groundtrail-example:small-web-change:source:ci",
+      "digest": "9fd2412a5e914ccd0defd525e84815a5cd32bb77290a54ae69081e534d519859"
+    }
+  ],
+  "outstandingControlPoints": [],
+  "knownUnknowns": [],
+  "nextSkills": ["evidence-handoff"],
+  "revision": "a14be72"
+}
