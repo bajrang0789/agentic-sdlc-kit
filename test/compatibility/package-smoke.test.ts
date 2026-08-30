@@ -71,28 +71,32 @@ describe('packed npm tarball', () => {
         ['install', '--ignore-scripts', '--no-audit', '--no-fund', join(root, tarball.filename)],
         temporary,
       );
-      const bin = process.platform === 'win32' ? 'groundtrail.cmd' : 'groundtrail';
-      const executable = join(temporary, 'node_modules', '.bin', bin);
-      await expect(command(executable, ['--version'], temporary)).resolves.toContain('0.1.0');
-      const listed = JSON.parse(await command(executable, ['list', '--json'], temporary)) as {
+      const cliPath = join(
+        temporary,
+        'node_modules',
+        '@bajrang0789',
+        'agentic-sdlc-kit',
+        'dist',
+        'cli.js',
+      );
+      const groundtrail = (args: readonly string[]) =>
+        command(process.execPath, [cliPath, ...args], temporary);
+      await expect(groundtrail(['--version'])).resolves.toContain('0.1.0');
+      const listed = JSON.parse(await groundtrail(['list', '--json'])) as {
         skills: unknown[];
       };
       expect(listed.skills).toHaveLength(11);
       await expect(
-        command(
-          executable,
-          [
-            'validate',
-            join(temporary, 'node_modules', '@bajrang0789', 'agentic-sdlc-kit', 'skills'),
-            '--kind',
-            'skill',
-          ],
-          temporary,
-        ),
+        groundtrail([
+          'validate',
+          join(temporary, 'node_modules', '@bajrang0789', 'agentic-sdlc-kit', 'skills'),
+          '--kind',
+          'skill',
+        ]),
       ).resolves.toContain('"valid": true');
       const output = join(temporary, 'rendered');
       await expect(
-        command(executable, ['render', '--provider', 'claude', '--output', output], temporary),
+        groundtrail(['render', '--provider', 'claude', '--output', output]),
       ).resolves.toContain('claude');
       const target = join(temporary, 'target');
       await command(
@@ -101,27 +105,19 @@ describe('packed npm tarball', () => {
         temporary,
       );
       await expect(
-        command(
-          executable,
-          ['install', '--provider', 'claude', '--target', target, '--dry-run', '--json'],
-          temporary,
-        ),
+        groundtrail(['install', '--provider', 'claude', '--target', target, '--dry-run', '--json']),
       ).resolves.toContain('"dryRun":true');
       await expect(
-        command(
-          executable,
-          [
-            'install',
-            'recover',
-            '--target',
-            target,
-            '--transaction',
-            '00000000-0000-4000-8000-000000000000',
-            '--strategy',
-            'rollback',
-          ],
-          temporary,
-        ),
+        groundtrail([
+          'install',
+          'recover',
+          '--target',
+          target,
+          '--transaction',
+          '00000000-0000-4000-8000-000000000000',
+          '--strategy',
+          'rollback',
+        ]),
       ).rejects.toMatchObject({ code: 1 });
     } finally {
       for (const file of await readdir(root)) {
