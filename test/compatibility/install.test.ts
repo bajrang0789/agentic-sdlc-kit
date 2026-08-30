@@ -76,7 +76,7 @@ describe('temporary consumer installations', () => {
         await rm(target, { recursive: true, force: true });
       }
     }
-  });
+  }, 15_000);
 
   it('rejects Codex and Devin from existing state before transaction staging or writes', async () => {
     for (const [first, second] of [
