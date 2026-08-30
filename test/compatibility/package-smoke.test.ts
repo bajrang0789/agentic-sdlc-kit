@@ -11,16 +11,46 @@ const execFile = promisify(execFileCallback);
 const root = resolve(import.meta.dirname, '../..');
 
 async function command(command: string, args: readonly string[], cwd: string): Promise<string> {
-  const result = await execFile(command, args, { cwd, encoding: 'utf8', timeout: 60_000 });
+  const result = await execFile(command, args, {
+    cwd,
+    encoding: 'utf8',
+    shell: false,
+    timeout: 60_000,
+  });
   return result.stdout;
 }
 
+function npmInvocation(
+  args: readonly string[],
+  platform: NodeJS.Platform,
+  npmExecPath: string | undefined,
+): { command: string; args: readonly string[] } {
+  if (npmExecPath) return { command: process.execPath, args: [npmExecPath, ...args] };
+  return { command: platform === 'win32' ? 'npm.cmd' : 'npm', args };
+}
+
+async function npmCommand(args: readonly string[], cwd: string): Promise<string> {
+  const invocation = npmInvocation(args, process.platform, process.env.npm_execpath);
+  return command(invocation.command, invocation.args, cwd);
+}
+
 describe('packed npm tarball', () => {
+  it('resolves npm without a shell on Windows', () => {
+    expect(npmInvocation(['pack'], 'win32', 'C:\\npm\\npm-cli.js')).toEqual({
+      command: process.execPath,
+      args: ['C:\\npm\\npm-cli.js', 'pack'],
+    });
+    expect(npmInvocation(['pack'], 'win32', undefined)).toEqual({
+      command: 'npm.cmd',
+      args: ['pack'],
+    });
+  });
+
   it('contains only distributable content and runs offline CLI smoke commands', async () => {
     const temporary = await mkdtemp(join(tmpdir(), 'groundtrail-pack-'));
     try {
-      await command('npm', ['run', 'build'], root);
-      const packed = (await command('npm', ['pack', '--json'], root)).trim();
+      await npmCommand(['run', 'build'], root);
+      const packed = (await npmCommand(['pack', '--json'], root)).trim();
       const metadata = JSON.parse(packed) as Array<{
         filename: string;
         files: Array<{ path: string }>;
@@ -37,8 +67,7 @@ describe('packed npm tarball', () => {
         ).toBe(true);
         expect(file.path).not.toMatch(/^(?:test|src|\.github)(?:\/|$)/u);
       }
-      await command(
-        'npm',
+      await npmCommand(
         ['install', '--ignore-scripts', '--no-audit', '--no-fund', join(root, tarball.filename)],
         temporary,
       );
